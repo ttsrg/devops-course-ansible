@@ -1,0 +1,13 @@
+server {
+  listen 80;
+
+  server_name ilia.devops.srwx.net;
+
+  location / {
+    return 200 "OK";
+  }
+
+  location /.well-known {
+    root /opt/acme;
+  }
+}
