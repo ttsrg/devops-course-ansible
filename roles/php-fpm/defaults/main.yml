@@ -1,0 +1,9 @@
+---
+php_fpm_version: 7.0
+php_fpm_engine: On
+php_fpm_short_open_tag: Off
+php_fpm_precision: 14
+php_fpm_output_buffering: 4096
+php_fpm_zlib_output_compression: Off
+php_fpm_implicit_flush: Off
+php_fpm_serialize_precision: 17

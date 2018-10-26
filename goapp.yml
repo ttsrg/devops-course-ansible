@@ -1,0 +1,24 @@
+---
+- hosts: all
+  gather_facts: False
+  become: yes
+  vars:
+    nginx_remove_default_vhost: true
+    ssl_certs_domains: [ilia.devops.srwx.net]
+    ssl_certs_email_confirmation: ilia@ilin.dn.ua
+    php_fpm_precision: 14
+    php_fpm_output_buffering: 8192
+  pre_tasks:
+    - name: Install python for Ansible
+      raw: bash -c "test -e /usr/bin/python || (apt -qqy update && apt install -qqy python-minimal)"
+      register: output
+      changed_when: output.stdout != ""
+    - name: Gathering Facts
+      setup:
+  roles:
+    - geerlingguy.nginx
+    - ssl_certs
+    - php-fpm
+    - {role: calc-web, tags: web}
+    - {role: calc-sum, tags: sum}
+    - {role: calc-diff, tars: diff}

@@ -1,0 +1,6 @@
+---
+  - name: Deploy phpapp
+    git:
+      repo: https://github.com/bkmz/phpapp.git
+      dest: /opt/phpapp
+    notify: nginx restarted
